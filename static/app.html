@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8" />
+  <title>Mon App</title>
+  
+  <script src="jquery.js"></script>
+  
+  <script>
+  $(function(){
+    var productList = $('#products')
+    
+    productList.empty()
+    
+    $.ajax('/products', {
+      success: function(data){
+        for(var product of data) {
+          productList.append(`<li>${product.name}</li>`)
+        }
+      }
+    })
+    
+  })
+  </script>
+</head>
+<body>
+  
+  <h3>Produits</h3>
+  <ul id="products">
+    <!-- dynamically generated -->
+  </ul>
+</body>
+</html>

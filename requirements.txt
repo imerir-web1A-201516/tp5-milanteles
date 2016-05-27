@@ -1,0 +1,6 @@
+flask
+flask-restful
+blinker
+gevent
+gunicorn
+psycopg2
