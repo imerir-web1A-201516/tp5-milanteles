@@ -3,6 +3,7 @@ from flask import Flask, request, make_response
 import json, os, psycopg2, urlparse
 
 app = Flask(__name__)
+app.debug = True
 
 ##################################################################
 
@@ -37,15 +38,18 @@ def db_createTables(conn, cur):
     INSERT INTO Product (name, price) VALUES ('Pomme', 1.20);
     INSERT INTO Product (name, price) VALUES ('Poire', 1.60);
     INSERT INTO Product (name, price) VALUES ('Fraise', 3.80);
+    DROP TABLE Basket;
     CREATE TABLE Basket (
       bid SERIAL,
       basket_uid INT
     );
+    DROP TABLE BasketContent;
     CREATE TABLE BasketContent (
       basket_ref INT,
       product_ref INT,
       product_qt INT
     );
+    DROP TABLE UserAccount;
     CREATE TABLE UserAccount (
       uid SERIAL,
       email varchar,
