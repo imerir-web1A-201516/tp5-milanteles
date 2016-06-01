@@ -19,6 +19,20 @@
         }
       }
     })
+
+    $.ajax('../products', {
+      method: 'POST',
+      contentType: 'application/json',
+      data: JSON.stringify({x: 5, y: 6}),
+      username: 'pierre',
+      password: '123456',  
+      success: function(responseData) {
+        console.log(responseData)
+      },
+      error: function(){
+        alert("Something went wrong")
+      }
+    })
     
   })
   </script>
@@ -29,5 +43,7 @@
   <ul id="products">
     <!-- dynamically generated -->
   </ul>
+
+  <h4>Créer un produit</h4>
 </body>
 </html>
