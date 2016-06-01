@@ -12,7 +12,7 @@
     
     productList.empty()
     
-    $.ajax('/products', {
+    $.ajax('http://127.0.0.1:5000/products', {
       success: function(data){
         for(var product of data) {
           productList.append(`<li>${product.name}</li>`)
