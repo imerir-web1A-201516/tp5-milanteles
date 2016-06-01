@@ -12,7 +12,7 @@
     
     productList.empty()
     
-    $.ajax('/products', {
+    $.ajax('../products', {
       success: function(data){
         for(var product of data) {
           productList.append(`<li>${product.name}</li>`)
