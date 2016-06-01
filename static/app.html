@@ -12,12 +12,37 @@
     
     productList.empty()
     
-    $.ajax('../products', {
+    $.ajax('/products', {
       success: function(data){
         for(var product of data) {
           productList.append(`<li>${product.name}</li>`)
         }
       }
+    })
+
+    $('#form').on('submit', function(e) {
+        e.preventDefault();
+
+        var name = $('#name').val();
+        var price = $('#price').val();
+
+        if(name === '' || price === '') {
+            alert('Les champs doivent êtres remplis');
+        } else {
+	    var data = JSON.stringify({"name":name, "price":price})
+            $.ajax('/products', {
+		method: 'POST',                
+                data: data,
+		dataType: "json",
+		contentType: "application/json",
+                success: function(responseData) {
+                    console.log(responseData);
+                },
+		error: function(){
+		    alert("Something went wrong")
+		}
+            })
+        }
     })
   
   })
@@ -31,5 +56,10 @@
   </ul>
 
   <h3>Créer un produit</h3>
+  <form id="form" method="post" action="/products">
+    <p>Name : <input type="text" id="name" /></p>
+    <p>Price : <input type="text" id="price" /></p>
+    <p><input type="submit" value="Create" /></p>
+  </form>
 </body>
 </html>
