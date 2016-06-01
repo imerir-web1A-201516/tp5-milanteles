@@ -43,13 +43,13 @@ def db_createTables(conn, cur):
       bid SERIAL,
       basket_uid INT
     );
-    DROP TABLE BasketContent;
+    DROP TABLE IF EXISTS BasketContent;
     CREATE TABLE BasketContent (
       basket_ref INT,
       product_ref INT,
       product_qt INT
     );
-    DROP TABLE UserAccount;
+    DROP TABLE IF EXISTS UserAccount;
     CREATE TABLE UserAccount (
       uid SERIAL,
       email varchar,
